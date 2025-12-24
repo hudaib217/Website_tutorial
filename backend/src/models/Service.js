@@ -31,8 +31,8 @@ const serviceSchema = new mongoose.Schema({
     type: String
   }],
   pricing: {
-    startingFrom: String,
-    type: String // hourly, project-based, monthly
+    startingFrom: { type: String },
+    pricingType: { type: String } // hourly, project-based, monthly
   },
   isActive: {
     type: Boolean,
