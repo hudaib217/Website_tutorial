@@ -24,7 +24,7 @@ const services = [
     technologies: ['React', 'Node.js', 'MongoDB', 'PostgreSQL', 'AWS', 'Docker'],
     pricing: {
       startingFrom: '$5,000',
-      type: 'project-based'
+      pricingType: 'project-based'
     },
     order: 1
   },
@@ -45,7 +45,7 @@ const services = [
     technologies: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Firebase'],
     pricing: {
       startingFrom: '$10,000',
-      type: 'project-based'
+      pricingType: 'project-based'
     },
     order: 2
   },
@@ -66,7 +66,7 @@ const services = [
     technologies: ['Python', 'Node.js', 'Zapier', 'Make', 'APIs'],
     pricing: {
       startingFrom: '$3,000',
-      type: 'project-based'
+      pricingType: 'project-based'
     },
     order: 3
   },
@@ -87,7 +87,7 @@ const services = [
     technologies: ['Figma', 'Adobe XD', 'Sketch', 'InVision'],
     pricing: {
       startingFrom: '$2,500',
-      type: 'project-based'
+      pricingType: 'project-based'
     },
     order: 4
   },
@@ -108,7 +108,7 @@ const services = [
     technologies: ['Google Analytics', 'SEMrush', 'Ahrefs', 'Google Ads'],
     pricing: {
       startingFrom: '$1,500/month',
-      type: 'monthly'
+      pricingType: 'monthly'
     },
     order: 5
   },
@@ -129,7 +129,7 @@ const services = [
     technologies: ['Monitoring Tools', 'Security Scanners', 'Backup Solutions'],
     pricing: {
       startingFrom: '$500/month',
-      type: 'monthly'
+      pricingType: 'monthly'
     },
     order: 6
   }

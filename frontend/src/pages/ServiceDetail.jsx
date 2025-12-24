@@ -81,8 +81,8 @@ const ServiceDetail = () => {
               <div className="bg-gray-50 rounded-xl p-6 sticky top-24">
                 <h3 className="text-2xl font-bold mb-4">Pricing</h3>
                 <div className="mb-6">
-                  <div className="text-4xl font-bold text-primary-600 mb-2">{service.pricing.startingFrom}</div>
-                  <div className="text-gray-600 capitalize">{service.pricing.type.replace('-', ' ')}</div>
+                  <div className="text-4xl font-bold text-primary-600 mb-2">{service.pricing?.startingFrom}</div>
+                  <div className="text-gray-600 capitalize">{service.pricing?.pricingType?.replace('-', ' ')}</div>
                 </div>
                 <Button to="/contact" variant="primary" size="lg" fullWidth>
                   Request Quote
