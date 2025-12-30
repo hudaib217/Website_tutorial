@@ -19,14 +19,17 @@ const iconMap = {
 const ServicesOverview = () => {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchServices = async () => {
       try {
         const response = await servicesAPI.getAll();
         setServices(response.data.data.slice(0, 6));
+        setError(false);
       } catch (error) {
         console.error('Error fetching services:', error);
+        setError(true);
       } finally {
         setLoading(false);
       }
@@ -36,6 +39,8 @@ const ServicesOverview = () => {
   }, []);
 
   if (loading) return <Loading />;
+
+  if (error || services.length === 0) return null;
 
   return (
     <Section bg="gray" padding="large">

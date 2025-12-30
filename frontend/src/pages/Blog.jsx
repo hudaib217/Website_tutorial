@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowRight, FaClock, FaUser } from 'react-icons/fa';
+import toast from 'react-hot-toast';
 import { blogAPI } from '../services/api';
 import SEO from '../components/common/SEO';
 import Section from '../components/common/Section';
 import Container from '../components/common/Container';
 import Card from '../components/common/Card';
+import Button from '../components/common/Button';
 import Loading from '../components/common/Loading';
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
@@ -24,8 +27,11 @@ const Blog = () => {
       const response = await blogAPI.getAll({ page, limit: 9 });
       setBlogs(response.data.data);
       setTotalPages(response.data.pages);
+      setError(false);
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error fetching blogs:', error);
+      setError(true);
+      toast.error('Failed to load blog posts. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -54,6 +60,21 @@ const Blog = () => {
         <Container>
           {loading ? (
             <Loading />
+          ) : error ? (
+            <div className="text-center py-12">
+              <div className="text-6xl mb-4">⚠️</div>
+              <h3 className="text-2xl font-bold mb-2">Unable to Load Blog Posts</h3>
+              <p className="text-gray-600 mb-6">Something went wrong. Please try again later.</p>
+              <Button onClick={() => window.location.reload()} variant="primary">
+                Retry
+              </Button>
+            </div>
+          ) : blogs.length === 0 ? (
+            <div className="text-center py-12">
+              <div className="text-6xl mb-4">📭</div>
+              <h3 className="text-2xl font-bold mb-2">No Blog Posts Found</h3>
+              <p className="text-gray-600">Check back later for our latest articles.</p>
+            </div>
           ) : (
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
