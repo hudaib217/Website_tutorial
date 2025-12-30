@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
+import toast from 'react-hot-toast';
 import { portfolioAPI } from '../services/api';
 import SEO from '../components/common/SEO';
 import Section from '../components/common/Section';
 import Container from '../components/common/Container';
 import Card from '../components/common/Card';
+import Button from '../components/common/Button';
 import Loading from '../components/common/Loading';
 
 const Portfolio = () => {
@@ -13,6 +15,7 @@ const Portfolio = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     fetchPortfolio();
@@ -25,8 +28,11 @@ const Portfolio = () => {
       const params = category && category !== 'all' ? { category } : {};
       const response = await portfolioAPI.getAll(params);
       setPortfolio(response.data.data);
+      setError(false);
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error fetching portfolio:', error);
+      setError(true);
+      toast.error('Failed to load portfolio. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -96,6 +102,21 @@ const Portfolio = () => {
 
           {loading ? (
             <Loading />
+          ) : error ? (
+            <div className="text-center py-12">
+              <div className="text-6xl mb-4">⚠️</div>
+              <h3 className="text-2xl font-bold mb-2">Unable to Load Portfolio</h3>
+              <p className="text-gray-600 mb-6">Something went wrong. Please try again later.</p>
+              <Button onClick={() => window.location.reload()} variant="primary">
+                Retry
+              </Button>
+            </div>
+          ) : portfolio.length === 0 ? (
+            <div className="text-center py-12">
+              <div className="text-6xl mb-4">📭</div>
+              <h3 className="text-2xl font-bold mb-2">No Projects Found</h3>
+              <p className="text-gray-600">Check back later for our latest projects.</p>
+            </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {portfolio.map((item) => (

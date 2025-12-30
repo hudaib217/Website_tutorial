@@ -207,6 +207,75 @@ const portfolio = [
     thumbnail: '/images/portfolio/realestate-thumb.jpg',
     completedDate: new Date('2024-10-20'),
     isFeatured: false
+  },
+  {
+    title: 'Healthcare Booking Platform',
+    slug: 'healthcare-booking-platform',
+    client: 'MediCare Plus',
+    category: 'web-development',
+    shortDescription: 'Patient-doctor appointment system with telemedicine integration',
+    fullDescription: 'A comprehensive healthcare platform enabling patients to book appointments, consult doctors online, and manage their medical records securely.',
+    challenge: 'Building a HIPAA-compliant system that handles sensitive patient data while providing a seamless user experience across web and mobile.',
+    solution: 'Developed a secure, encrypted platform with video consultation capabilities, automated reminders, and integration with insurance providers.',
+    results: [
+      '10,000+ appointments booked monthly',
+      'Reduced no-show rate by 40%',
+      'Patient satisfaction score of 4.9/5',
+      'Saved 200+ hours of admin work monthly'
+    ],
+    technologies: ['React', 'Node.js', 'PostgreSQL', 'WebRTC', 'Twilio'],
+    images: [
+      { url: '/images/portfolio/healthcare-1.jpg', caption: 'Dashboard' }
+    ],
+    thumbnail: '/images/portfolio/healthcare-thumb.jpg',
+    completedDate: new Date('2024-08-15'),
+    isFeatured: true
+  },
+  {
+    title: 'Restaurant Chain Mobile App',
+    slug: 'restaurant-chain-mobile-app',
+    client: 'TastyBites',
+    category: 'mobile-app',
+    shortDescription: 'Food ordering and loyalty rewards app for a restaurant chain',
+    fullDescription: 'A feature-rich mobile application for ordering food, earning loyalty points, and finding nearby restaurant locations with real-time wait times.',
+    challenge: 'Creating a unified ordering experience across 50+ restaurant locations with varying menus and real-time inventory sync.',
+    solution: 'Built a scalable React Native app with location-based features, real-time menu updates, and an engaging gamified loyalty program.',
+    results: [
+      '100,000+ app downloads in 3 months',
+      'Average order value increased by 25%',
+      'Repeat customer rate up 60%',
+      '4.7-star rating on both app stores'
+    ],
+    technologies: ['React Native', 'Node.js', 'MongoDB', 'Redis', 'Stripe'],
+    images: [
+      { url: '/images/portfolio/restaurant-1.jpg', caption: 'Home screen' }
+    ],
+    thumbnail: '/images/portfolio/restaurant-thumb.jpg',
+    completedDate: new Date('2024-07-01'),
+    isFeatured: false
+  },
+  {
+    title: 'Corporate Brand Redesign',
+    slug: 'corporate-brand-redesign',
+    client: 'TechVision Corp',
+    category: 'ui-ux',
+    shortDescription: 'Complete brand identity and website redesign for a tech company',
+    fullDescription: 'A comprehensive brand refresh including logo design, color palette, typography system, and a fully redesigned corporate website with improved user experience.',
+    challenge: 'Modernizing a 15-year-old brand identity while maintaining recognition among existing clients and appealing to new markets.',
+    solution: 'Conducted extensive brand research, created a new visual identity system, and designed a modern website with improved navigation and conversion optimization.',
+    results: [
+      'Brand recognition increased by 45%',
+      'Website bounce rate reduced by 35%',
+      'Lead generation improved by 80%',
+      'Employee brand pride score up 50%'
+    ],
+    technologies: ['Figma', 'Adobe Creative Suite', 'React', 'Framer Motion'],
+    images: [
+      { url: '/images/portfolio/branding-1.jpg', caption: 'Brand guidelines' }
+    ],
+    thumbnail: '/images/portfolio/branding-thumb.jpg',
+    completedDate: new Date('2024-06-20'),
+    isFeatured: false
   }
 ];
 
@@ -288,6 +357,93 @@ Increased efficiency, reduced errors, scalability...
     publishedDate: new Date('2024-11-20'),
     metaTitle: 'Why Every Business Needs Process Automation | Agency Blog',
     metaDescription: 'Discover how automation can transform your business operations.'
+  },
+  {
+    title: 'UI/UX Design Principles That Drive Conversions',
+    slug: 'ui-ux-design-principles-conversions',
+    excerpt: 'Master the design principles that turn visitors into customers and boost your conversion rates.',
+    content: `Great design is more than aesthetics—it's about creating experiences that convert...
+
+## Understanding User Psychology
+How users think and make decisions online...
+
+## Key Design Principles
+Clarity, hierarchy, consistency, and feedback...
+
+## Measuring Design Success
+KPIs and metrics that matter...
+
+[Full article content would go here]`,
+    featuredImage: '/images/blog/ui-ux-design.jpg',
+    author: {
+      name: 'Emily Davis',
+      avatar: '/images/authors/emily.jpg',
+      bio: 'Lead UI/UX Designer with expertise in conversion optimization'
+    },
+    category: 'Design',
+    tags: ['UI/UX', 'design', 'conversions', 'user experience'],
+    readTime: 10,
+    publishedDate: new Date('2024-11-10'),
+    metaTitle: 'UI/UX Design Principles That Drive Conversions | Agency Blog',
+    metaDescription: 'Learn design principles that convert visitors into customers.'
+  },
+  {
+    title: 'SEO Strategies for 2025: What Actually Works',
+    slug: 'seo-strategies-2025-what-works',
+    excerpt: 'Cut through the noise and discover SEO strategies that deliver real results in the current landscape.',
+    content: `SEO continues to evolve, and staying ahead requires adapting to new algorithms...
+
+## Core Web Vitals and Performance
+Why speed and user experience matter more than ever...
+
+## Content Quality Over Quantity
+E-E-A-T and creating genuinely helpful content...
+
+## Technical SEO Essentials
+Site structure, schema markup, and crawlability...
+
+[Full article content would go here]`,
+    featuredImage: '/images/blog/seo-2025.jpg',
+    author: {
+      name: 'David Martinez',
+      avatar: '/images/authors/david.jpg',
+      bio: 'SEO Specialist with 8 years of experience in digital marketing'
+    },
+    category: 'Marketing',
+    tags: ['SEO', 'marketing', 'digital marketing', 'search engines'],
+    readTime: 9,
+    publishedDate: new Date('2024-11-05'),
+    metaTitle: 'SEO Strategies for 2025: What Actually Works | Agency Blog',
+    metaDescription: 'Discover effective SEO strategies that deliver real results in 2025.'
+  },
+  {
+    title: 'Building Scalable APIs: Best Practices',
+    slug: 'building-scalable-apis-best-practices',
+    excerpt: 'Learn how to design and build APIs that can handle millions of requests while maintaining performance.',
+    content: `APIs are the backbone of modern applications. Here's how to build them right...
+
+## API Design Principles
+RESTful design, versioning, and documentation...
+
+## Performance Optimization
+Caching, pagination, and rate limiting...
+
+## Security Best Practices
+Authentication, authorization, and data validation...
+
+[Full article content would go here]`,
+    featuredImage: '/images/blog/api-design.jpg',
+    author: {
+      name: 'Michael Chen',
+      avatar: '/images/authors/michael.jpg',
+      bio: 'Mobile Development Specialist'
+    },
+    category: 'Development',
+    tags: ['API', 'backend', 'scalability', 'architecture'],
+    readTime: 11,
+    publishedDate: new Date('2024-10-28'),
+    metaTitle: 'Building Scalable APIs: Best Practices | Agency Blog',
+    metaDescription: 'Master the art of building scalable, high-performance APIs.'
   }
 ];
 

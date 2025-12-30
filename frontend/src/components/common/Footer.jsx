@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaGithub } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaGithub, FaEnvelope } from 'react-icons/fa';
+import toast from 'react-hot-toast';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [email, setEmail] = useState('');
+  const [subscribing, setSubscribing] = useState(false);
+
+  const handleNewsletterSubmit = async (e) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setSubscribing(true);
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    toast.success('Thanks for subscribing! Check your inbox for confirmation.');
+    setEmail('');
+    setSubscribing(false);
+  };
 
   const footerLinks = {
     company: [
@@ -36,6 +51,38 @@ const Footer = () => {
 
   return (
     <footer className="bg-gray-900 text-gray-300">
+      {/* Newsletter Section */}
+      <div className="border-b border-gray-800">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div className="text-center lg:text-left">
+              <h3 className="text-2xl font-bold text-white mb-2">Stay Updated</h3>
+              <p className="text-gray-400">Get the latest insights, tips, and news delivered to your inbox.</p>
+            </div>
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+              <div className="relative flex-1 lg:w-80">
+                <FaEnvelope className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  required
+                  className="w-full pl-12 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={subscribing}
+                className="px-6 py-3 bg-gradient-to-r from-primary-600 to-accent-600 text-white font-semibold rounded-lg hover:from-primary-700 hover:to-accent-700 transition-all disabled:opacity-50"
+              >
+                {subscribing ? 'Subscribing...' : 'Subscribe'}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand */}

@@ -105,6 +105,26 @@ const Contact = () => {
             </Card>
           </div>
 
+          {/* Google Maps Section */}
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold mb-6 text-center">Find Us</h2>
+            <div className="rounded-xl overflow-hidden shadow-lg h-[400px]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.30596698663!2d-74.25987368715491!3d40.69714941932609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1703000000000!5m2!1sen!2s"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Office Location"
+              />
+            </div>
+            <p className="text-center text-gray-500 text-sm mt-4">
+              Visit our office for a face-to-face consultation
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <Card>

@@ -10,14 +10,17 @@ import Loading from '../common/Loading';
 const PortfolioPreview = () => {
   const [portfolio, setPortfolio] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchPortfolio = async () => {
       try {
         const response = await portfolioAPI.getAll({ featured: 'true' });
         setPortfolio(response.data.data.slice(0, 3));
+        setError(false);
       } catch (error) {
         console.error('Error fetching portfolio:', error);
+        setError(true);
       } finally {
         setLoading(false);
       }
@@ -36,6 +39,8 @@ const PortfolioPreview = () => {
   };
 
   if (loading) return <Loading />;
+
+  if (error || portfolio.length === 0) return null;
 
   return (
     <Section bg="white" padding="large">
