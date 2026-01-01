@@ -66,16 +66,14 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Image/Illustration placeholder */}
+          {/* Hero Image */}
           <div className="hidden lg:block">
             <div className="relative">
-              <div className="w-full h-[600px] bg-white/10 backdrop-blur-sm rounded-2xl shadow-2xl flex items-center justify-center">
-                <div className="text-center text-white">
-                  <div className="text-6xl mb-4">💻</div>
-                  <p className="text-lg">Hero Illustration</p>
-                  <p className="text-sm text-gray-300">Replace with actual image</p>
-                </div>
-              </div>
+              <img
+                src="/images/hero.png"
+                alt="Digital Solutions"
+                className="w-full h-[600px] object-contain drop-shadow-2xl"
+              />
             </div>
           </div>
         </div>

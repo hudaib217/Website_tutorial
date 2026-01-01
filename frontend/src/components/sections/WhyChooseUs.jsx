@@ -64,15 +64,13 @@ const WhyChooseUs = () => {
           </div>
         </div>
 
-        {/* Image placeholder */}
+        {/* Image */}
         <div className="relative">
-          <div className="aspect-square bg-gradient-to-br from-primary-100 to-accent-100 rounded-2xl shadow-2xl flex items-center justify-center">
-            <div className="text-center text-gray-600">
-              <div className="text-6xl mb-4">🎯</div>
-              <p className="text-lg font-semibold">Why Choose Us Illustration</p>
-              <p className="text-sm">Replace with actual image/graphic</p>
-            </div>
-          </div>
+          <img
+            src="/images/WhyChoose.png"
+            alt="Why Choose Us"
+            className="w-full rounded-2xl shadow-2xl"
+          />
           {/* Decorative elements */}
           <div className="absolute -top-6 -right-6 w-24 h-24 bg-accent-500 rounded-full opacity-20"></div>
           <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-primary-500 rounded-full opacity-20"></div>
