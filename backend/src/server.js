@@ -8,9 +8,6 @@ const { apiLimiter } = require('./middleware/rateLimiter');
 
 // Import routes
 const leadRoutes = require('./routes/leadRoutes');
-const serviceRoutes = require('./routes/serviceRoutes');
-const portfolioRoutes = require('./routes/portfolioRoutes');
-const blogRoutes = require('./routes/blogRoutes');
 
 // Initialize app
 const app = express();
@@ -37,9 +34,6 @@ app.use('/uploads', express.static('uploads'));
 
 // Routes
 app.use('/api/leads', leadRoutes);
-app.use('/api/services', serviceRoutes);
-app.use('/api/portfolio', portfolioRoutes);
-app.use('/api/blogs', blogRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

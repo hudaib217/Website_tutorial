@@ -1,18 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { FaArrowLeft, FaExternalLinkAlt, FaCalendar, FaUser, FaCheck } from 'react-icons/fa';
-import toast from 'react-hot-toast';
-import { portfolioAPI } from '../services/api';
+import portfolio from '../data/portfolioData';
 import SEO from '../components/common/SEO';
 import Section from '../components/common/Section';
 import Container from '../components/common/Container';
 import Button from '../components/common/Button';
-import Loading from '../components/common/Loading';
 
 const PortfolioDetail = () => {
   const { slug } = useParams();
-  const [project, setProject] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const project = portfolio.find(p => p.slug === slug);
 
   const categoryLabels = {
     'web-development': 'Web Development',
@@ -22,24 +19,6 @@ const PortfolioDetail = () => {
     'seo-marketing': 'SEO & Marketing',
     'maintenance': 'Maintenance',
   };
-
-  useEffect(() => {
-    const fetchProject = async () => {
-      try {
-        const response = await portfolioAPI.getBySlug(slug);
-        setProject(response.data.data);
-      } catch (error) {
-        console.error('Error fetching project:', error);
-        toast.error('Failed to load project details.');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProject();
-  }, [slug]);
-
-  if (loading) return <Loading fullScreen />;
 
   if (!project) {
     return (

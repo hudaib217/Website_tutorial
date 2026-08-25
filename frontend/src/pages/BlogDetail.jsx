@@ -1,47 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { FaArrowLeft, FaClock, FaUser, FaCalendar, FaEye, FaTag, FaTwitter, FaLinkedin, FaFacebook } from 'react-icons/fa';
-import toast from 'react-hot-toast';
-import { blogAPI } from '../services/api';
+import blogs from '../data/blogsData';
 import SEO from '../components/common/SEO';
 import Section from '../components/common/Section';
 import Container from '../components/common/Container';
 import Button from '../components/common/Button';
-import Loading from '../components/common/Loading';
 
 const BlogDetail = () => {
   const { slug } = useParams();
-  const [blog, setBlog] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [recentPosts, setRecentPosts] = useState([]);
-
-  useEffect(() => {
-    const fetchBlog = async () => {
-      try {
-        const response = await blogAPI.getBySlug(slug);
-        setBlog(response.data.data);
-      } catch (error) {
-        console.error('Error fetching blog:', error);
-        toast.error('Failed to load blog post.');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    const fetchRecentPosts = async () => {
-      try {
-        const response = await blogAPI.getFeatured(3);
-        setRecentPosts(response.data.data);
-      } catch (error) {
-        console.error('Error fetching recent posts:', error);
-      }
-    };
-
-    fetchBlog();
-    fetchRecentPosts();
-  }, [slug]);
-
-  if (loading) return <Loading fullScreen />;
+  const blog = blogs.find(b => b.slug === slug);
+  const recentPosts = blogs.filter(b => b.slug !== slug).slice(0, 3);
 
   if (!blog) {
     return (
@@ -93,7 +62,7 @@ const BlogDetail = () => {
             </div>
             <div className="flex items-center text-gray-300 text-sm">
               <FaEye className="mr-1" />
-              {blog.views} views
+              {blog.views || 0} views
             </div>
           </div>
 
@@ -244,23 +213,20 @@ const BlogDetail = () => {
                 <div className="bg-gray-50 rounded-xl p-6">
                   <h3 className="text-xl font-bold mb-6">Recent Articles</h3>
                   <div className="space-y-4">
-                    {recentPosts
-                      .filter(post => post.slug !== slug)
-                      .slice(0, 3)
-                      .map((post) => (
-                        <Link
-                          key={post._id}
-                          to={`/blog/${post.slug}`}
-                          className="block group"
-                        >
-                          <p className="font-semibold text-gray-900 group-hover:text-primary-600 transition-colors line-clamp-2">
-                            {post.title}
-                          </p>
-                          <p className="text-sm text-gray-500 mt-1">
-                            {post.readTime} min read
-                          </p>
-                        </Link>
-                      ))}
+                    {recentPosts.map((post) => (
+                      <Link
+                        key={post._id}
+                        to={`/blog/${post.slug}`}
+                        className="block group"
+                      >
+                        <p className="font-semibold text-gray-900 group-hover:text-primary-600 transition-colors line-clamp-2">
+                          {post.title}
+                        </p>
+                        <p className="text-sm text-gray-500 mt-1">
+                          {post.readTime} min read
+                        </p>
+                      </Link>
+                    ))}
                   </div>
                 </div>
 

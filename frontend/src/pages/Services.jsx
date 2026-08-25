@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaCode, FaMobile, FaCog, FaPalette, FaChartLine, FaTools, FaArrowRight } from 'react-icons/fa';
-import toast from 'react-hot-toast';
-import { servicesAPI } from '../services/api';
+import services from '../data/servicesData';
 import SEO from '../components/common/SEO';
 import Section from '../components/common/Section';
 import Container from '../components/common/Container';
 import Card from '../components/common/Card';
-import Button from '../components/common/Button';
-import Loading from '../components/common/Loading';
 
 const iconMap = {
   code: FaCode,
@@ -20,30 +17,6 @@ const iconMap = {
 };
 
 const Services = () => {
-  const [services, setServices] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        const response = await servicesAPI.getAll();
-        setServices(response.data.data);
-        setError(false);
-      } catch (error) {
-        console.error('Error fetching services:', error);
-        setError(true);
-        toast.error('Failed to load services. Please try again.');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchServices();
-  }, []);
-
-  if (loading) return <Loading fullScreen />;
-
   return (
     <>
       <SEO
@@ -65,22 +38,6 @@ const Services = () => {
 
       <Section bg="white" padding="large">
         <Container>
-          {error ? (
-            <div className="text-center py-12">
-              <div className="text-6xl mb-4">⚠️</div>
-              <h3 className="text-2xl font-bold mb-2">Unable to Load Services</h3>
-              <p className="text-gray-600 mb-6">Something went wrong. Please try again later.</p>
-              <Button onClick={() => window.location.reload()} variant="primary">
-                Retry
-              </Button>
-            </div>
-          ) : services.length === 0 ? (
-            <div className="text-center py-12">
-              <div className="text-6xl mb-4">📭</div>
-              <h3 className="text-2xl font-bold mb-2">No Services Found</h3>
-              <p className="text-gray-600">Check back later for our service offerings.</p>
-            </div>
-          ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service) => {
               const Icon = iconMap[service.icon] || FaCode;
@@ -113,7 +70,6 @@ const Services = () => {
               );
             })}
           </div>
-          )}
         </Container>
       </Section>
     </>

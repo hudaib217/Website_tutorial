@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaCode, FaMobile, FaCog, FaPalette, FaChartLine, FaTools, FaArrowRight } from 'react-icons/fa';
-import { servicesAPI } from '../../services/api';
+import services from '../../data/servicesData';
 import Section from '../common/Section';
 import Card from '../common/Card';
 import Button from '../common/Button';
-import Loading from '../common/Loading';
 
 const iconMap = {
   code: FaCode,
@@ -17,30 +16,7 @@ const iconMap = {
 };
 
 const ServicesOverview = () => {
-  const [services, setServices] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        const response = await servicesAPI.getAll();
-        setServices(response.data.data.slice(0, 6));
-        setError(false);
-      } catch (error) {
-        console.error('Error fetching services:', error);
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchServices();
-  }, []);
-
-  if (loading) return <Loading />;
-
-  if (error || services.length === 0) return null;
+  const displayServices = services.slice(0, 6);
 
   return (
     <Section bg="gray" padding="large">
@@ -54,7 +30,7 @@ const ServicesOverview = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-        {services.map((service) => {
+        {displayServices.map((service) => {
           const Icon = iconMap[service.icon] || FaCode;
           return (
             <Card key={service._id} className="group">

@@ -1,34 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { FaArrowLeft, FaCheck } from 'react-icons/fa';
-import { servicesAPI } from '../services/api';
+import services from '../data/servicesData';
 import SEO from '../components/common/SEO';
 import Section from '../components/common/Section';
 import Container from '../components/common/Container';
 import Button from '../components/common/Button';
-import Loading from '../components/common/Loading';
 
 const ServiceDetail = () => {
   const { slug } = useParams();
-  const [service, setService] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const service = services.find(s => s.slug === slug);
 
-  useEffect(() => {
-    const fetchService = async () => {
-      try {
-        const response = await servicesAPI.getBySlug(slug);
-        setService(response.data.data);
-      } catch (error) {
-        console.error('Error fetching service:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchService();
-  }, [slug]);
-
-  if (loading) return <Loading fullScreen />;
   if (!service) return <div>Service not found</div>;
 
   return (
