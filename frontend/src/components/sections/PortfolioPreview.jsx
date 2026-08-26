@@ -1,46 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
-import { portfolioAPI } from '../../services/api';
+import portfolio from '../../data/portfolioData';
 import Section from '../common/Section';
 import Card from '../common/Card';
 import Button from '../common/Button';
-import Loading from '../common/Loading';
 
 const PortfolioPreview = () => {
-  const [portfolio, setPortfolio] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    const fetchPortfolio = async () => {
-      try {
-        const response = await portfolioAPI.getAll({ featured: 'true' });
-        setPortfolio(response.data.data.slice(0, 3));
-        setError(false);
-      } catch (error) {
-        console.error('Error fetching portfolio:', error);
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPortfolio();
-  }, []);
+  const featuredPortfolio = portfolio.filter(item => item.isFeatured).slice(0, 3);
 
   const categoryLabels = {
     'web-development': 'Web Development',
     'mobile-app': 'Mobile App',
     'automation': 'Automation',
-    'ui-ux': 'UI/UX Design',
+    'ai-automation': 'AI Automation',
     'seo-marketing': 'SEO & Marketing',
     'maintenance': 'Maintenance',
   };
 
-  if (loading) return <Loading />;
-
-  if (error || portfolio.length === 0) return null;
+  if (featuredPortfolio.length === 0) return null;
 
   return (
     <Section bg="white" padding="large">
@@ -54,7 +32,7 @@ const PortfolioPreview = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-        {portfolio.map((item) => (
+        {featuredPortfolio.map((item) => (
           <Card key={item._id} padding={false} className="overflow-hidden group">
             <div className="relative h-64 bg-gradient-to-br from-primary-100 to-accent-100 flex items-center justify-center overflow-hidden">
               <div className="text-center text-gray-600">
