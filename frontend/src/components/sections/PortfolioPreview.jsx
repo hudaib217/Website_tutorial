@@ -13,7 +13,7 @@ const PortfolioPreview = () => {
     'web-development': 'Web Development',
     'mobile-app': 'Mobile App',
     'automation': 'Automation',
-    'ui-ux': 'UI/UX Design',
+    'ai-automation': 'AI Automation',
     'seo-marketing': 'SEO & Marketing',
     'maintenance': 'Maintenance',
   };

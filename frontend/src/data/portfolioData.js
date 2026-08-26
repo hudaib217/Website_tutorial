@@ -124,26 +124,26 @@ const portfolio = [
   },
   {
     _id: '6',
-    title: 'Corporate Brand Redesign',
-    slug: 'corporate-brand-redesign',
-    client: 'TechVision Corp',
-    category: 'ui-ux',
-    shortDescription: 'Complete brand identity and website redesign for a tech company',
-    fullDescription: 'A comprehensive brand refresh including logo design, color palette, typography system, and a fully redesigned corporate website with improved user experience.',
-    challenge: 'Modernizing a 15-year-old brand identity while maintaining recognition among existing clients and appealing to new markets.',
-    solution: 'Conducted extensive brand research, created a new visual identity system, and designed a modern website with improved navigation and conversion optimization.',
+    title: 'AI-Powered Customer Support Automation',
+    slug: 'ai-customer-support-automation',
+    client: 'ServiceBot Inc',
+    category: 'ai-automation',
+    shortDescription: 'Intelligent chatbot and workflow automation system for 24/7 customer support',
+    fullDescription: 'Developed an AI-driven customer support platform that automates ticket routing, provides instant responses via a trained chatbot, and streamlines support workflows using natural language processing.',
+    challenge: 'High volume of repetitive customer inquiries overwhelming the support team, leading to slow response times and inconsistent service quality.',
+    solution: 'Built a custom LLM-powered chatbot integrated with the client\'s existing CRM, trained on their knowledge base, with intelligent escalation to human agents for complex issues.',
     results: [
-      'Brand recognition increased by 45%',
-      'Website bounce rate reduced by 35%',
-      'Lead generation improved by 80%',
-      'Employee brand pride score up 50%'
+      '70% of inquiries resolved without human intervention',
+      'Average response time reduced from 4 hours to under 30 seconds',
+      'Customer satisfaction score increased by 35%',
+      'Support team capacity increased by 3x'
     ],
-    technologies: ['Figma', 'Adobe Creative Suite', 'React', 'Framer Motion'],
+    technologies: ['Python', 'OpenAI API', 'LangChain', 'FastAPI', 'React'],
     images: [
-      { url: '/images/portfolio/branding-1.jpg', caption: 'Brand guidelines' }
+      { url: '/images/portfolio/ai-support-1.jpg', caption: 'Chatbot dashboard' }
     ],
-    thumbnail: '/images/portfolio/branding-thumb.jpg',
-    completedDate: '2024-06-20',
+    thumbnail: '/images/portfolio/ai-support-thumb.jpg',
+    completedDate: '2025-01-15',
     isFeatured: false
   }
 ];
